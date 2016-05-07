@@ -9,5 +9,8 @@ repositories {
 }
 
 dependencies {
-	compile "net.kwas:fizzbuzz-client:1.0-SNAPSHOT"
+	compile "net.kwas:fizz-provider:1.0-SNAPSHOT"
+	compile "net.kwas:buzz-provider:1.0-SNAPSHOT"
+
+	testCompile "junit:junit:4.12"
 }

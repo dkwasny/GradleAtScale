@@ -1,11 +1,9 @@
-package net.kwas.fizzbuzz.driver;
-
-import net.kwas.fizzbuzz.service.client.FizzBuzzClient;
+package net.kwas.fizzbuzz.service.client;
 
 import java.io.IOException;
 import java.net.InetAddress;
 
-public class FizzBuzzDriver {
+public class FizzBuzzClientDriver {
 
 	public static void main(String[] args) throws IOException {
 		int port = Integer.parseInt(args[0]);
