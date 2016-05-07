@@ -3,15 +3,13 @@ buildscript {
 		jcenter()
 	}
 	dependencies {
-		classpath "com.netflix.nebula:nebula-dependency-recommender:3.3.0"
-//		classpath "io.spring.gradle:dependency-management-plugin:0.5.6.RELEASE"
+		classpath "io.spring.gradle:dependency-management-plugin:0.5.6.RELEASE"
 	}
 }
 
 apply plugin: "java"
 apply plugin: "maven"
-apply plugin: "nebula.dependency-recommender"
-//apply plugin: "io.spring.dependency-management"
+apply plugin: "io.spring.dependency-management"
 
 group = "net.kwas"
 version = "1.0-SNAPSHOT"
@@ -21,14 +19,11 @@ repositories {
 	mavenCentral()
 }
 
-dependencyRecommendations {
-	mavenBom module: "net.kwas:common-bom:1.0-SNAPSHOT"
+dependencyManagement {
+	imports {
+		mavenBom "net.kwas:common-bom:1.0-SNAPSHOT"
+	}
 }
-//dependencyManagement {
-//	imports {
-//		mavenBom "net.kwas:common-bom:1.0-SNAPSHOT"
-//	}
-//}
 
 dependencies {
 	compile "com.google.guava:guava"
