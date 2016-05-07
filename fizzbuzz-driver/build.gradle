@@ -1,0 +1,13 @@
+apply plugin: "java"
+apply plugin: "maven"
+
+group = "net.kwas"
+version = "1.0-SNAPSHOT"
+
+repositories {
+	mavenLocal()
+}
+
+dependencies {
+	compile "net.kwas:fizzbuzz-client:1.0-SNAPSHOT"
+}

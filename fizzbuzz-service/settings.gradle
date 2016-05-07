@@ -1,1 +1,1 @@
-include "fizzbuzz-clent", "fizzbuzz-server"
+include "fizzbuzz-client", "fizzbuzz-server"

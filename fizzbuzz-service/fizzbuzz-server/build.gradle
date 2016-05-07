@@ -1,0 +1,8 @@
+repositories {
+	mavenLocal()
+}
+
+dependencies {
+	compile "net.kwas:fizz-provider:1.0-SNAPSHOT"
+	compile "net.kwas:buzz-provider:1.0-SNAPSHOT"
+}
