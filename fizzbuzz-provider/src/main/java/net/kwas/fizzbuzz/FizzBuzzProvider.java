@@ -1,29 +1,26 @@
 package net.kwas.fizzbuzz;
 
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import net.kwas.buzz.BuzzProvider;
 import net.kwas.fizz.FizzProvider;
 
 public class FizzBuzzProvider {
 
-	private final FizzProvider fizzProvider;
-	private final BuzzProvider buzzProvider;
-
-	public FizzBuzzProvider(FizzProvider fizzProvider, BuzzProvider buzzProvider) {
-		this.fizzProvider = fizzProvider;
-		this.buzzProvider = buzzProvider;
-	}
+	private static final LoadingCache<Integer, String> CACHE = CacheBuilder
+		.newBuilder()
+		.concurrencyLevel(4)
+		.maximumSize(1000)
+		.build(
+			new FizzBuzzCacheLoader(
+				new FizzProvider(),
+				new BuzzProvider()
+			)
+		);
 
 	public String getFizzBuzz(int iteration) {
-		String fizzBuzzOutput = fizzProvider.getFizz(iteration) + buzzProvider.getBuzz(iteration);
-
-		String retVal;
-		if ("".equals(fizzBuzzOutput)) {
-			retVal = Integer.toString(iteration);
-		}
-		else {
-			retVal = fizzBuzzOutput;
-		}
-		return retVal;
+		return CACHE.getUnchecked(iteration);
 	}
 
 }

@@ -1,10 +1,13 @@
 package net.kwas.fizzbuzz.service.server;
 
+import com.google.common.base.Joiner;
 import net.kwas.fizzbuzz.FizzBuzzProvider;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FizzBuzzServer {
 
@@ -45,13 +48,12 @@ public class FizzBuzzServer {
 	}
 
 	private String generateOutput(int iterations) {
-		StringBuilder builder = new StringBuilder();
-
+		List<String> outputs = new ArrayList<>();
 		for (int i = 1; i <= iterations; ++i) {
-			builder.append(fizzBuzzProvider.getFizzBuzz(i)).append("\n");
+			outputs.add(fizzBuzzProvider.getFizzBuzz(i));
 		}
 
-		return builder.toString();
+		return Joiner.on('\n').join(outputs);
 	}
 
 }

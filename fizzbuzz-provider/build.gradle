@@ -6,11 +6,13 @@ version = "1.0-SNAPSHOT"
 
 repositories {
 	mavenLocal()
+	mavenCentral()
 }
 
 dependencies {
 	compile "net.kwas:fizz-provider:1.0-SNAPSHOT"
 	compile "net.kwas:buzz-provider:1.0-SNAPSHOT"
+	compile "com.google.guava:guava:19.0"
 
 	testCompile "junit:junit:4.12"
 }

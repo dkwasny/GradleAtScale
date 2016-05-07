@@ -1,16 +1,11 @@
 package net.kwas.fizzbuzz;
 
-import net.kwas.buzz.BuzzProvider;
-import net.kwas.fizz.FizzProvider;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class FizzBuzzProviderTest {
 
-	private final FizzBuzzProvider fizzBuzzProvider = new FizzBuzzProvider(
-		new FizzProvider(),
-		new BuzzProvider()
-	);
+	private final FizzBuzzProvider fizzBuzzProvider = new FizzBuzzProvider();
 
 	@Test
 	public void getFizzBuzzNumberCase() {

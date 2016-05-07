@@ -1,7 +1,9 @@
 repositories {
 	mavenLocal()
+	mavenCentral()
 }
 
 dependencies {
 	compile "net.kwas:fizzbuzz-provider:1.0-SNAPSHOT"
+	compile "com.google.guava:guava:19.0"
 }
