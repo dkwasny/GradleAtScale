@@ -1,4 +1,4 @@
-package net.kwas.fizzbuzz.server;
+package net.kwas.fizzbuzz.service.server;
 
 import net.kwas.buzz.BuzzProvider;
 import net.kwas.fizz.FizzProvider;
@@ -19,20 +19,31 @@ public class FizzBuzzServer {
 		this.buzzProvider = buzzProvider;
 	}
 
-	public void run() throws IOException {
-		ServerSocket serverSocket = new ServerSocket(port);
+	public void start() throws IOException {
+		System.out.println("Starting server");
+		try (ServerSocket serverSocket = new ServerSocket(port)) {
+			runMainLoop(serverSocket);
+		}
+		System.out.println("Exiting server");
+	}
+
+	private void runMainLoop(ServerSocket serverSocket) throws IOException {
 		while (true) {
 			System.out.println("Waiting for input on port " + port);
-			Socket socket = serverSocket.accept();
-			InputStream inputStream = socket.getInputStream();
-			DataInputStream dataInputStream = new DataInputStream(inputStream);
-			int input = dataInputStream.readInt();
-
-			String response = generateOutput(input);
-
-			OutputStream outputStream = socket.getOutputStream();
-			DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
-			dataOutputStream.writeUTF(response);
+			try (
+				Socket socket = serverSocket.accept();
+				InputStream inputStream = socket.getInputStream();
+				DataInputStream dataInputStream = new DataInputStream(inputStream);
+				OutputStream outputStream = socket.getOutputStream();
+				DataOutputStream dataOutputStream = new DataOutputStream(outputStream)
+			) {
+				int input = dataInputStream.readInt();
+				if (input == -1) {
+					System.out.println("Exit code found...");
+					return;
+				}
+				dataOutputStream.writeUTF(generateOutput(input));
+			}
 		}
 	}
 

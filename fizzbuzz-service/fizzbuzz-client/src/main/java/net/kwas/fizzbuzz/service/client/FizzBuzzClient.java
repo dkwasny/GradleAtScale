@@ -15,14 +15,16 @@ public class FizzBuzzClient {
 	}
 
 	public String call(int iterations) throws IOException {
-		Socket socket = new Socket(host, port);
-		OutputStream outputStream = socket.getOutputStream();
-		DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
-		dataOutputStream.writeInt(iterations);
-
-		InputStream inputStream = socket.getInputStream();
-		DataInputStream dataInputStream = new DataInputStream(inputStream);
-		return dataInputStream.readUTF();
+		try (
+			Socket socket = new Socket(host, port);
+			OutputStream outputStream = socket.getOutputStream();
+			DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
+			InputStream inputStream = socket.getInputStream();
+			DataInputStream dataInputStream = new DataInputStream(inputStream);
+		) {
+			dataOutputStream.writeInt(iterations);
+			return dataInputStream.readUTF();
+		}
 	}
 
 }

@@ -1,4 +1,4 @@
-package net.kwas.fizzbuzz.server;
+package net.kwas.fizzbuzz.service.server;
 
 import net.kwas.buzz.BuzzProvider;
 import net.kwas.fizz.FizzProvider;
@@ -12,7 +12,7 @@ public class FizzBuzzServerDriver {
 		FizzProvider fizzProvider = new FizzProvider();
 		BuzzProvider buzzProvider = new BuzzProvider();
 		FizzBuzzServer server = new FizzBuzzServer(port, fizzProvider, buzzProvider);
-		server.run();
+		server.start();
 	}
 
 }
