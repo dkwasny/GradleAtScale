@@ -1,5 +1,17 @@
+buildscript {
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath "com.netflix.nebula:nebula-dependency-recommender:3.3.0"
+//		classpath "io.spring.gradle:dependency-management-plugin:0.5.6.RELEASE"
+	}
+}
+
 apply plugin: "java"
 apply plugin: "maven"
+apply plugin: "nebula.dependency-recommender"
+//apply plugin: "io.spring.dependency-management"
 
 group = "net.kwas"
 version = "1.0-SNAPSHOT"
@@ -9,10 +21,20 @@ repositories {
 	mavenCentral()
 }
 
-dependencies {
-	compile "net.kwas:fizz-provider:1.0-SNAPSHOT"
-	compile "net.kwas:buzz-provider:1.0-SNAPSHOT"
-	compile "com.google.guava:guava:19.0"
+dependencyRecommendations {
+	mavenBom module: "net.kwas:common-bom:1.0-SNAPSHOT"
+	mavenBom module: "net.kwas:provider-bom:1.0-SNAPSHOT"
+}
+//dependencyManagement {
+//	imports {
+//		mavenBom "net.kwas:common-bom:1.0-SNAPSHOT"
+//		mavenBom "net.kwas:provider-bom:1.0-SNAPSHOT"
+//	}
+//}
 
-	testCompile "junit:junit:4.12"
+dependencies {
+	compile "net.kwas:fizz-provider"
+	compile "net.kwas:buzz-provider"
+	compile "com.google.guava:guava"
+	testCompile "junit:junit"
 }

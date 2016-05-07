@@ -1,9 +1,33 @@
+buildscript {
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath "com.netflix.nebula:nebula-dependency-recommender:3.3.0"
+//		classpath "io.spring.gradle:dependency-management-plugin:0.5.6.RELEASE"
+	}
+}
+
+apply plugin: "nebula.dependency-recommender"
+//apply plugin: "io.spring.dependency-management"
+
 repositories {
 	mavenLocal()
 	mavenCentral()
 }
 
+dependencyRecommendations {
+	mavenBom module: "net.kwas:common-bom:1.0-SNAPSHOT"
+	mavenBom module: "net.kwas:provider-bom:1.0-SNAPSHOT"
+}
+//dependencyManagement {
+//	imports {
+//		mavenBom "net.kwas:common-bom:1.0-SNAPSHOT"
+//		mavenBom "net.kwas:provider-bom:1.0-SNAPSHOT"
+//	}
+//}
+
 dependencies {
-	compile "net.kwas:fizzbuzz-provider:1.0-SNAPSHOT"
-	compile "com.google.guava:guava:19.0"
+	compile "net.kwas:fizzbuzz-provider"
+	compile "com.google.guava:guava"
 }
