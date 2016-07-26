@@ -8,7 +8,7 @@ if [ ! -e .gradle ]; then
 	mkdir .gradle;
 fi;
 
-for i in *-bom; do
+for i in $(ls | grep "bom$"); do
 	pushd "$i";
 	mvn install;
 	popd;
