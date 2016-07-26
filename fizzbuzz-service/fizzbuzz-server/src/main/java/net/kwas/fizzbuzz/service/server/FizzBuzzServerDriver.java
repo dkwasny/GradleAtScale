@@ -1,10 +1,8 @@
 package net.kwas.fizzbuzz.service.server;
 
-import net.kwas.buzz.BuzzProvider;
-import net.kwas.fizz.FizzProvider;
-import net.kwas.fizzbuzz.FizzBuzzProvider;
-
 import java.io.IOException;
+
+import net.kwas.fizzbuzz.FizzBuzzProvider;
 
 public class FizzBuzzServerDriver {
 
