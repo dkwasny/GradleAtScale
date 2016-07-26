@@ -2,6 +2,7 @@ subprojects {
 	apply plugin: "java"
 	apply plugin: "maven"
 	apply plugin: "eclipse"
+	apply plugin: "idea"
 
 	group = "net.kwas"
 	version = "1.0-SNAPSHOT"

@@ -1,8 +1,12 @@
 .gradle
 build/
+*.swp
+
+# Intellij IDEA
+*.ipr
+*.iws
 .idea
 *.iml
-*.swp
 
 # Eclipse
 bin
