@@ -10,6 +10,11 @@ fi;
 
 for i in fizz-provider buzz-provider fizzbuzz-provider fizzbuzz-service; do
 	pushd "$i";
+	if [ -f "build.gradle" ]; then
+		echo "Building $i...";
 		./gradlew cleanIdea idea;
+	else
+		echo "Skipping $i...";
+	fi;
 	popd;
 done;
