@@ -25,3 +25,9 @@ dependencies {
 	compile "net.kwas:fizzbuzz-provider"
 	compile "com.google.guava:guava"
 }
+
+task runServer(type: JavaExec) {
+	classpath = sourceSets.main.runtimeClasspath
+	main = "net.kwas.fizzbuzz.service.server.FizzBuzzServerDriver"
+	args = ["12345"]
+}

@@ -1,0 +1,5 @@
+task runClient(type: JavaExec) {
+	classpath = sourceSets.main.runtimeClasspath
+	main = "net.kwas.fizzbuzz.service.client.FizzBuzzClientDriver"
+	args = ["12345", "100"]
+}
